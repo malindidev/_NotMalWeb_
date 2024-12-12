@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Loader with Animation and Copy Feature</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to External CSS for Styling -->
+</head>
+<body>
+    <!-- Overlay Content -->
+    <div class="overlay">
+        <div class="content">
+            <h1>Interactive Script Loader</h1>
+            <p>This tool allows you to copy a Lua script to execute it via <b>loadstring</b>.</p>
+            
+            <!-- Displaying the loadstring -->
+            <div class="script-container">
+                <textarea id="scriptText" readonly>
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/malindidev/_NotMal_/main/script.lua", true))()
+                </textarea>
+                <button class="copy-btn" onclick="copyToClipboard()">Copy Script</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JS for Dynamic Features -->
+    <script src="scripts.js"></script>
+</body>
+</html>
