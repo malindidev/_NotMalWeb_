@@ -1,0 +1,106 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling the body */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff6347, #f0e68c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Overlay styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Content box */
+.content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+/* Animation for the overlay */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Floating effect for the content */
+@keyframes floatUp {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Styling for the script container */
+.script-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    background-color: #f4f4f4;
+}
+
+.copy-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+/* Animation for the button */
+@keyframes buttonHover {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Adding some floating animation for scroll effects */
+body {
+    animation: bodyMove 3s ease-in-out infinite;
+}
+
+@keyframes bodyMove {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
