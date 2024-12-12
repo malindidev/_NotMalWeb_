@@ -1,56 +1,51 @@
-// Copy function
+// Function to copy the script to clipboard
 function copyToClipboard() {
   const scriptText = document.getElementById("script-text").textContent;
-  navigator.clipboard.writeText(scriptText)
-    .then(() => {
-      alert("Script copied to clipboard!");
-    })
-    .catch(err => {
-      console.error("Failed to copy text: ", err);
-    });
+  const textarea = document.createElement('textarea');
+  document.body.appendChild(textarea);
+  textarea.value = scriptText;
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+
+  // Change button text to "Copied!" and revert after 2 seconds
+  const copyButton = document.getElementById("copyButton");
+  copyButton.classList.add("copied");
+  setTimeout(() => {
+    copyButton.classList.remove("copied");
+  }, 2000);
+
+  alert('Script copied to clipboard!');
 }
 
-// Building block animation as you scroll
-const buildAnimationContainer = document.getElementById('build-animation');
-
+// Scroll animation to reveal blocks
 window.addEventListener('scroll', function () {
   let scrollPosition = window.scrollY;
-  if (scrollPosition > 100) {
-    // Show building blocks dynamically
-    createBuildingBlocks(scrollPosition);
+  
+  // Trigger building blocks animation as you scroll down
+  if (scrollPosition > 300) {
+    createBuildingBlocks();
+  }
+  
+  // Show the running player when scrolling past certain point
+  if (scrollPosition > 500) {
+    document.getElementById("running-player").style.display = "block";
+  } else {
+    document.getElementById("running-player").style.display = "none";
+  }
+
+  // Show the script copy button when scrolling further
+  if (scrollPosition > 700) {
+    document.getElementById("script-container").style.display = "block";
   }
 });
 
-// Create building blocks
-function createBuildingBlocks(scrollPosition) {
-  const blockCount = Math.min(Math.floor(scrollPosition / 50), 10);
-  buildAnimationContainer.innerHTML = ''; // Clear previous blocks
-  for (let i = 0; i < blockCount; i++) {
-    const block = document.createElement('div');
-    block.classList.add('building-block');
-    buildAnimationContainer.appendChild(block);
+// Dynamically create blocks as you scroll
+function createBuildingBlocks() {
+  const blockContainer = document.getElementById("building-blocks");
+  for (let i = 0; i < 5; i++) {
+    let block = document.createElement("div");
+    block.classList.add("building-block");
+    blockContainer.appendChild(block);
   }
 }
-
-// Show hidden text and animations on scroll
-const scriptContainer = document.getElementById("script-container");
-const runningPlayer = document.getElementById("running-player");
-
-window.addEventListener('scroll', function () {
-  let scrollPosition = window.scrollY;
-  if (scrollPosition > 200) {
-    scriptContainer.classList.remove('hidden');
-    runningPlayer.style.animation = "runPlayer 1s ease-in-out infinite";
-  }
-});
-
-// Player running animation
-const playerRunning = document.querySelector("#running-player img");
-playerRunning.style.animation = "runPlayer 1s linear infinite";
-
-// Keyframes for player running
-document.styleSheets[0].insertRule(`
-  @keyframes runPlayer {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(300px); }
-}`, 0);
