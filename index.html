@@ -1,33 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Script Loader</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <div class="container">
-      <button class="copy-btn" onclick="copyToClipboard()">Copy Script</button>
-    </div>
-  </header>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <section class="content">
-    <div id="build-animation" class="build-animation">
-      <h2>Scroll Down to see animations</h2>
-    </div>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #101010;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
 
-    <div id="script-container" class="hidden">
-      <p>Here is the script:</p>
-      <pre id="script-text">loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/vapevoidware/main/NewMainScript.lua", true))()</pre>
-    </div>
+.container {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
 
-    <div id="running-player" class="running-player">
-      <img src="player_running.gif" alt="Running Roblox Player" />
-    </div>
-  </section>
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
 
-  <script src="scripts.js"></script>
-</body>
-</html>
+.copy-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.copy-btn:hover {
+  background-color: #0056b3;
+}
+
+.copy-btn:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 5
